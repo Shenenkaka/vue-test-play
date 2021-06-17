@@ -1,8 +1,8 @@
 <template>
-  {{ msg }}
-  <span v-bind:title="message">
-    点我悬停看效果
-  </span>
+  <div>
+    {{ msg }}
+    <span v-bind:title="message"> 点我悬停看效果 </span>
+  </div>
 </template>
 
 <script lang="ts">
@@ -12,27 +12,27 @@ export default defineComponent({
   props: {
     msg: {
       type: String,
-      required: true,
+      required: false,
     },
   },
-  data:() => {
+  data: () => {
     return {
-      message: 'hello, i am kaka',
-      count: 0
-    }
+      message: "hello, i am kaka",
+      count: 0,
+    };
   },
   setup: () => {
     const count = ref(0);
     return { count };
   },
 
-  mounted(){
-    console.log('mounted >>>', this.count)
+  mounted() {
+    console.log("mounted >>>", this.count);
   },
 
-  increasement(){
-    console.log("this >>> ", this)
-  }
+  increasement() {
+    console.log("this >>> ", this);
+  },
 });
 </script>
 

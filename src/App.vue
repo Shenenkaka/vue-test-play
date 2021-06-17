@@ -1,16 +1,20 @@
 <template>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <router-link to="/foobar">Go to foobar</router-link>
+  <router-link to="/helloworld">Go to helloworld</router-link>
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+import Foobar from './components/Foobar.vue'
 console.log("defineComponent >>> ", defineComponent)
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    Foobar
   }
 })
 </script>
