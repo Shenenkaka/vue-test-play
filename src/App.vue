@@ -1,6 +1,8 @@
 <template>
   <router-link to="/foobar">Go to foobar</router-link>
   <router-link to="/helloworld">Go to helloworld</router-link>
+  <button @click="handleClick">按我试试</button>
+  {{ storeCount }}
   <router-view></router-view>
 </template>
 
@@ -8,13 +10,26 @@
 import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Foobar from './components/Foobar.vue'
-console.log("defineComponent >>> ", defineComponent)
 
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld,
     Foobar
+  },
+  computed: {
+    storeCount() {
+      return this.$store.state.count
+    }
+  },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    handleClick() {
+      this.$store.commit('increment')
+    }
   }
 })
 </script>

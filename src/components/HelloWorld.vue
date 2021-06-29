@@ -1,7 +1,8 @@
 <template>
   <div>
-    {{ msg }}
+    {{ storeCount }}
     <span v-bind:title="message"> 点我悬停看效果 </span>
+    <button @click="increasement">点击我试试</button>
   </div>
 </template>
 
@@ -15,13 +16,14 @@ export default defineComponent({
       required: false,
     },
   },
-  data: () => {
+  data() {
     return {
       message: "hello, i am kaka",
       count: 0,
+      storeCount: this.$store.state.count,
     };
   },
-  setup: () => {
+  setup() {
     const count = ref(0);
     return { count };
   },
@@ -30,8 +32,10 @@ export default defineComponent({
     console.log("mounted >>>", this.count);
   },
 
-  increasement() {
-    console.log("this >>> ", this);
+  methods: {
+    increasement() {
+      this.$store.commit("increment");
+    },
   },
 });
 </script>
